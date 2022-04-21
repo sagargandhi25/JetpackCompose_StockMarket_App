@@ -16,15 +16,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CompanyListingsViewModel @Inject constructor(
-    private val repository: StockRepository,
-): ViewModel() {
+    private val repository: StockRepository
+) : ViewModel() {
 
     var state by mutableStateOf(CompanyListingsState())
 
     private var searchJob: Job? = null
 
+        init {
+            getCompanyListings()
+        }
+
     fun onEvent(event: CompanyListingsEvent) {
-        when(event) {
+        when (event) {
             is CompanyListingsEvent.Refresh -> {
                 getCompanyListings(fetchFromRemote = true)
             }
@@ -46,8 +50,8 @@ class CompanyListingsViewModel @Inject constructor(
         viewModelScope.launch {
             repository
                 .getCompanyListing(fetchFromRemote, query)
-                .collect{ result ->
-                    when(result) {
+                .collect { result ->
+                    when (result) {
                         is Resource.Success -> {
                             result.data?.let { listings ->
                                 state = state.copy(
