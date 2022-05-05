@@ -56,7 +56,7 @@ fun StockChart(
             }
         }
         val priceStep = (upperValue - lowerValue) / 5f
-        (0..5).forEach { i ->
+        (0..4).forEach { i ->
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
                     round(lowerValue + priceStep * i).toString(),
@@ -75,7 +75,7 @@ fun StockChart(
                 val leftRatio = (info.close - lowerValue) / (upperValue - lowerValue)
                 val rightRatio = (nextInfo.close - lowerValue) / (upperValue - lowerValue)
 
-                val x1 = spacing + 1 * spacePerHour
+                val x1 = spacing + i * spacePerHour
                 val y1 = height - spacing - (leftRatio * height).toFloat()
                 val x2 = spacing + (i + 1) * spacePerHour
                 val y2 = height - spacing - (rightRatio * height).toFloat()

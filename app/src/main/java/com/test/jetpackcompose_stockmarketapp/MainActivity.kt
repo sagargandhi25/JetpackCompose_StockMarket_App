@@ -8,7 +8,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.test.jetpackcompose_stockmarketapp.presentation.company_listing.NavGraphs
+import com.test.jetpackcompose_stockmarketapp.presentation.NavGraphs
+
 import com.test.jetpackcompose_stockmarketapp.ui.theme.JetpackCompose_StockMarket_AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
